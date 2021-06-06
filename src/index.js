@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import API from '../src/js/apiService';
+import ApiService from '../src/js/apiService';
 import imageCardTpl from '../src/templates/image-cards.hbs';
 // import { error } from '@pnotify/core';
 // import '@pnotify/core/dist/PNotify.css';
@@ -10,32 +10,47 @@ const refs = {
     searchForm: document.querySelector('.search-form'),
     inputRef: document.querySelector('.input'),
     galleryRef: document.querySelector('.gallery'),
-    photCardRef: document.querySelector('.photo-card'),
+    photoCardRef: document.querySelector('.photo-card'),
     loadMoreBtn: document.querySelector('.btn-more'),
 }
+
+const imageApiService = new ApiService();
 
 refs.searchForm.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 function onSearch(event) {
-        event.preventDefault();
-        // const inputRefValue = refs.inputRef.value.trim();
-        const inputRefValue = event.currentTarget.elements.query.value;
-        // const inputRefValueTrim = inputRefValue.trim();
-        API.apiService(inputRefValue, 2).then(markUpSearchResult);
-    }
+    event.preventDefault();
 
-function onLoadMore () {
-    
+    imageApiService.query = event.currentTarget.elements.query.value;
+    imageApiService.resetPage();
+    imageApiService.fetchImages().then(images => {
+        clearImagesMarkup();
+        imagesMarkup(images);
+    });
+
+    // const inputRefValue = refs.inputRef.value.trim();
+    // const inputRefValue = event.currentTarget.elements.query.value;
+    // const inputRefValueTrim = inputRefValue.trim();
+    // API.apiService(inputRefValue, 2).then(markUpSearchResult);
 }
 
-function markUpSearchResult(image) {
-    refs.galleryRef.innerHTML = '';
-    const markUp = imageCardTpl(image);
-    refs.galleryRef.innerHTML = markUp;
+function onLoadMore () {
+    imageApiService.fetchImages().then(imagesMarkup);
+}
+
+// function markUpSearchResult(image) {
+//     refs.galleryRef.innerHTML = '';
+//     const markUp = imageCardTpl(image);
+//     refs.galleryRef.innerHTML = markUp;
     
+function imagesMarkup (images) {
+    refs.galleryRef.insertAdjacentHTML('beforeend', imageCardTpl(images));
+}
 
-
+function clearImagesMarkup() {
+    refs.galleryRef.innerHTML = '';
+}
 
     // if (country.length === 1) {
     //     const markUp = countryCardTpl(country);
@@ -54,8 +69,8 @@ function markUpSearchResult(image) {
     //                 delay: 3000,
     //                 });
     //         }
-    return;
-}
+//     return;
+// }
 
 
 
