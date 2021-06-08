@@ -12,9 +12,9 @@ export default class ApiService {
 
     fetchImages() {
         return fetch(`${BASE_URL}&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${AUTH_KEY}`).then(response => 
-            response.json()).then(({images}) => {
+            response.json()).then(data => {
                 this.incrementPage();
-                return images;
+                return data.hits;
         });  
     }
 

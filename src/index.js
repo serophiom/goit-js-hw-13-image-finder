@@ -1,9 +1,24 @@
 import './sass/main.scss';
 import ApiService from '../src/js/apiService';
 import imageCardTpl from '../src/templates/image-cards.hbs';
+import 'material-icons/iconfont/material-icons.css';
+// import basicLightbox from 'basiclightbox';
 // import { error } from '@pnotify/core';
 // import '@pnotify/core/dist/PNotify.css';
 // import '@pnotify/core/dist/BrightTheme.css';
+
+// document.querySelector('button.image').onclick = () => {
+
+// 	basicLightbox.create(`
+// 		<img width="1400" height="900" src="https://placehold.it/1400x900">
+// 	`).show()
+
+// }
+
+// const basicLightbox = require('basiclightbox')
+
+
+// const basicLightbox = require('basiclightbox')
 
 const debounce = require('lodash.debounce');
 const refs = {
@@ -12,7 +27,17 @@ const refs = {
     galleryRef: document.querySelector('.gallery'),
     photoCardRef: document.querySelector('.photo-card'),
     loadMoreBtn: document.querySelector('.btn-more'),
+    // modalBtn: document.querySelector('.btn-modal'),
 }
+
+// refs.modalBtn.addEventListener('click', onModalBtn);
+
+// function onModalBtn () {
+//     console.log('AAAAAAAAAAAA');
+//     basicLightbox.create(`
+// 		<img width="1400" height="900" src="https://placehold.it/1400x900">
+//  	`).show()
+// }
 
 const imageApiService = new ApiService();
 

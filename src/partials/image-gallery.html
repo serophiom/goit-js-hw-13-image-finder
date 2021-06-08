@@ -1,23 +1,35 @@
-<article class="example">
+<div class="search">
   <h1>Поиск изображений</h1>
 
 <form class="search-form" id="search-form">
   <input class="input" type="text" name="query" autocomplete="off" placeholder="Search images..." />
 </form>
+</div>
 
-<ul class="gallery">
+<div class="gallery-container">
+  <ul class="gallery">
   <!-- Список <li> с карточками изображений -->
 </ul>
+</div>
 
-<button
+<div class="button-more">
+  <button
   type="button"
   class="btn-more"
   data-action="load-more"
 >
 <span class="label">Показать еще</span>
 </button>
+</div>
 
 
+<!-- <button
+  type="button"
+  class="btn-modal"
+  data-action="load-more"
+>
+<span class="label">Modal</span>
+</button> -->
   <!-- Путь к изображениям из HTML-фрагмента такой, как из файла index.html -->
   <!-- <img src="images/demo.jpg" alt="" width="320" />
   <p>
@@ -47,4 +59,4 @@
   </p>
 
   <div class="background"></div> -->
-</article> 
+
