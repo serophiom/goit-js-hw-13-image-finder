@@ -2,6 +2,7 @@ import './sass/main.scss';
 import ApiService from '../src/js/apiService';
 import imageCardTpl from '../src/templates/image-cards.hbs';
 import 'material-icons/iconfont/material-icons.css';
+
 // import basicLightbox from 'basiclightbox';
 // import { error } from '@pnotify/core';
 // import '@pnotify/core/dist/PNotify.css';

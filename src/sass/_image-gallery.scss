@@ -56,13 +56,13 @@
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     grid-auto-rows: 240px;
     // grid-gap: 12px;
-    row-gap: 150px;
+    row-gap: 70px;
     column-gap: 12px;
     padding: 0;
     list-style: none;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 150px;
+    margin-bottom: 70px;
   }
   
   .photo-card {
@@ -76,6 +76,8 @@
   }
   
   .gallery-image {
+    margin-bottom: 10px;
+
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -90,6 +92,15 @@
   
   .gallery__link:hover {
     cursor: zoom-in;
+  }
+
+  .stats {
+    display: flex;
+    align-items: center;
+  }
+
+  .stats-item {
+    margin-right: 10px;
   }
 
   .button-more {
