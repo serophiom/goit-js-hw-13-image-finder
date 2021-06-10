@@ -2,10 +2,6 @@ import './sass/main.scss';
 import ApiService from '../src/js/apiService';
 import imageCardTpl from '../src/templates/image-cards.hbs';
 import 'material-icons/iconfont/material-icons.css';
-import * as basicLightbox from 'basiclightbox';
-// import { error } from '@pnotify/core';
-// import '@pnotify/core/dist/PNotify.css';
-// import '@pnotify/core/dist/BrightTheme.css';
 
 const debounce = require('lodash.debounce');
 const refs = {
@@ -35,8 +31,6 @@ function onSearch(event) {
 function onLoadMore () {
     imageApiService.fetchImages().then(imagesMarkup).then(() => {
         let scrollToElement = refs.galleryRef.children[refs.galleryRef.children.length - 12];
-        console.log(scroll);
-        // let scrollToElement = refs.loadMoreBtn
           scrollToElement.scrollIntoView
           ({
             behavior: 'smooth',
@@ -44,29 +38,7 @@ function onLoadMore () {
           });
         
     })
-        
-    
-    // let scrollToElement = refs.galleryRef.children[12];
-    // console.log(refs.galleryRef.children.length);
-    // // let scrollToElement = refs.loadMoreBtn
-    //   scrollToElement.scrollIntoView
-    //   ({
-    //     behavior: 'smooth',
-    //     block: 'start',
-    //   });
 }
-
-// function onLoadMoreScroll () {
-    
-//     let scrollToElement = refs.galleryRef.children[12];
-//     console.log(refs.galleryRef.children.length);
-//     // let scrollToElement = refs.loadMoreBtn
-//       scrollToElement.scrollIntoView
-//       ({
-//         behavior: 'smooth',
-//         block: 'start',
-//       });
-// }
     
 function imagesMarkup (images) {
     refs.galleryRef.insertAdjacentHTML('beforeend', imageCardTpl(images));
